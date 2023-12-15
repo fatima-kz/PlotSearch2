@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Similarity Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sideBar">
+            {% for history in histories %}
+        <div>
+            <h3>History</h3>
+            <ul>
+                {% for movie in history %}
+                    <li>{{ movie.title }} - Similarity: {{ movie.similarity|round(2) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+        </div>
+        <div class="sideBar2">
+            <h1>Top 5 Similar Movies</h1>
+            <form action="/" method="post">
+                <h2>Enter Movie Plot</h2>
+                <input type="text" class="plot" name="plot" required>
+                <button type="submit">Search</button>
+            </form>
+            <div class="result">
+                {% for movie in movies %}
+                    <p>{{ movie.title }} - Similarity: {{ movie.similarity|round(2) }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
