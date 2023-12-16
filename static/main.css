@@ -15,12 +15,17 @@ input[type="search"]::-webkit-search-cancel-button {
     src: url('JosefinSans-VariableFont_wght.ttf') format('truetype'); 
 }
 
+@font-face {
+    font-family: 'myfont2';
+    src: url('Tonight-Friend.otf') format('truetype'); 
+}
+
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'myfont';
+    font-family: 'myfont2';
 }
 
 .container {
@@ -29,19 +34,20 @@ html, body {
 }
 
 .container .sideBar {
-    width: 20vw;
-    height: 100vh;
-    background-color: #555;
+    width: 23vw;
+    height: 100%;
+    background-color: rgb(17, 17, 17);
     color: #fff;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
 }
 
 .container .sideBar2 {
-    width: 80vw;
-    height: 100vh;
+    width: 77vw;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: rgb(85, 105, 125);
 }
 
 .container .sideBar2 h1 {
@@ -50,6 +56,24 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-shadow: 4px 0px 8px rgb(112,116,122);
+}
+.container .sideBar2 p {
+    font-size: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    text-shadow: 4px 0px 8px rgb(112,116,122);
+}
+
+.container .sideBar2 .header {
+    background-color: rgb(201,204,200);
+    border-radius: 5%;
+    box-shadow: 0 4px 8px black;
+    margin-left: 10px;
+    font-family: 'myfont2';
 }
 
 .container .sideBar2 form button {
@@ -60,16 +84,24 @@ html, body {
 
 .container .sideBar2 form h2 {
     font-size: 30px;
+    color: #fff;
+    text-shadow: 0 4px 8px black;
     display: flex;
-    padding-top: 10vh;
+    padding-top: 6vh;
     align-items: center;
     justify-content: center;
 }
 
 .container .sideBar2 form input {
-    width: 20vw;
+    width: 40vw;
     height: 5vh;
-    margin-left: 28.5vw;
+    margin-left: 18.5vw;
+    border-radius: 30%;
+    border-width: 0%;
+    border-color: transparent;
+    box-shadow: 0 4px 8px black;
+    font-size: medium;
+    font-family: 'myfont2';
 }
 
 .container .sideBar2 .result {
@@ -77,24 +109,41 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 5vh;
     height: 100vh;
     font-size: x-large;
-}
-
-.container .sideBar2 {
-    border: 5px solid #000;
-    background-color: #a5a5a5;
+    margin: 30px;
+    background-color: rgb(201,204,200);
+    border-radius: 10%;
+    box-shadow: 0 4px 8px black;
 }
 
 .container .sideBar div {
-    border: 2px solid #000;
+    border: 2px solid white;
 }
 
 .container .sideBar2 form button {
-    border: 3px solid black;
+    margin-top: 30px;
+    margin-right: 40vw;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 30%;
+    border-width: 0%;
+    border-color: transparent;
+    box-shadow: 0 4px 8px black;
+    font-size: medium;
+    font-family: 'myfont2';
 }
 
 .container .sideBar2 form button:hover {
     background-color: #555;
+}
+
+.container img {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    bottom: 75vh;
+    left: 22vw;
+    
 }
