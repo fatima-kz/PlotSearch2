@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <img src="{{ url_for('static', filename='image.png') }}" alt="logo">
         <div class="sideBar">
             {% for history in histories %}
         <div>
@@ -21,7 +22,10 @@
     {% endfor %}
         </div>
         <div class="sideBar2">
-            <h1>Top 5 Similar Movies</h1>
+            <div class="header">
+                <h1>PLOT SEARCH</h1>
+                <p>TOP 5 SIMILAR MOVIES</p>
+            </div>
             <form action="/" method="post">
                 <h2>Enter Movie Plot</h2>
                 <input type="text" class="plot" name="plot" required>
