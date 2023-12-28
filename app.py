@@ -2,12 +2,30 @@ from flask import Flask, render_template, request
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer as tvec
 from sklearn.metrics.pairwise import cosine_similarity as sim
-import numpy as np
+#import numpy as np
 from collections import deque
-import scipy.sparse
+#from transformers import pipeline
+#import scipy.sparse
 
 app = Flask(__name__)
 queue = deque(maxlen=4)
+#fill_mask = pipeline("fill-mask", model="bert-base-uncased")
+dataFrame = pd.read_excel('D:\horror2.xlsx', sheet_name='horror')
+movieNames = dataFrame['name'].tolist()
+movieRating = dataFrame['rating'].tolist()
+descriptions = dataFrame['description'].tolist()
+newDescriptions = []
+newMovies = []
+newRating = []
+for obj1, obj2, obj in zip(movieNames,movieRating,descriptions):
+    if pd.notna(obj) and pd.notna(obj2):
+        newDescriptions.append(str(obj))
+        newMovies.append(str(obj1))
+        newRating.append(str(obj2))
+    #else:
+    #   newDescriptions.append('')
+vectorizer = tvec(stop_words='english', max_features=3000)
+matrix = vectorizer.fit_transform(newDescriptions)
 @app.route('/', methods= ['POST','GET'])
 
 def index():
@@ -19,25 +37,14 @@ def index():
     else:
         return render_template('index.html')
 
-def similaritySearch(new_plot):
-    dataFrame = pd.read_excel('D:\horror2.xlsx', sheet_name='horror')
-    movieNames = dataFrame['name'].tolist()
-    descriptions = dataFrame['description'].tolist()
-    newDescriptions = []
-    for obj in descriptions:
-        if pd.notna(obj):
-            newDescriptions.append(str(obj))
-        else:
-            newDescriptions.append('')
-    vectorizer = tvec(stop_words='english', max_features=3000)
-    matrix = vectorizer.fit_transform(newDescriptions)
-    sparse_matrix = scipy.sparse.csr_matrix(matrix)
+def similaritySearch(newPlot):
+    #sparse_matrix = scipy.sparse.csr_matrix(matrix)
     #vector = matrix.toarray()
-    vectorize = vectorizer.transform([new_plot]).toarray()
-    similaritySearching = sim(vectorize, sparse_matrix)[0]
+    vectorize = vectorizer.transform([newPlot])
+    similaritySearching = sim(vectorize, matrix)[0]
     simMoviesList = []
-    for title, similarity in zip(movieNames, similaritySearching):
-        simMovies = {"title": title, "similarity": similarity}
+    for title, rating, similarity in zip(newMovies, newRating, similaritySearching):
+        simMovies = {"title": title, "rating": rating, "similarity": similarity*100}
         simMoviesList.append(simMovies)
     simMoviesList.sort(key=lambda x: x['similarity'], reverse=True)
     return simMoviesList[:5]
