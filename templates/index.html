@@ -11,15 +11,15 @@
         <img src="{{ url_for('static', filename='image.png') }}" alt="logo">
         <div class="sideBar">
             {% for history in histories %}
-        <div>
-            <h3>History</h3>
-            <ul>
-                {% for movie in history %}
-                    <li>{{ movie.title }} - Similarity: {{ movie.similarity|round(2) }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endfor %}
+                <div>
+                    <h3>History</h3>
+                    <ul>
+                        {% for movie in history %}
+                            <li>{{ movie.title }} - Similarity: {{ movie.similarity|round(2) }}%</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
         </div>
         <div class="sideBar2">
             <div class="header">
@@ -33,7 +33,7 @@
             </form>
             <div class="result">
                 {% for movie in movies %}
-                    <p>{{ movie.title }} - Similarity: {{ movie.similarity|round(2) }}</p>
+                    <p>{{ movie.title }} - Rating: {{ movie.rating }} - Similarity: {{ movie.similarity|round(2) }}%</p>
                 {% endfor %}
             </div>
         </div>
