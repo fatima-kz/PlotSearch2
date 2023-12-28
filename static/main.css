@@ -1,5 +1,5 @@
-input[type="search"] {
-    /*-webkit-appearance: textfield;*/
+/*input[type="search"] {
+    /*-webkit-appearance: textfield;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box; 
     box-sizing: content-box;
@@ -8,7 +8,7 @@ input[type="search"] {
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
    -webkit-appearance: none;
-}
+}*/
 
 @font-face {
     font-family: 'myfont';
@@ -40,6 +40,11 @@ html, body {
     color: #fff;
     padding: 5px;
     text-align: center;
+    font-family: 'myfont';
+}
+
+.container .sideBar h3 {
+    font-family: 'myfont2';
 }
 
 .container .sideBar2 {
@@ -101,7 +106,7 @@ html, body {
     border-color: transparent;
     box-shadow: 0 4px 8px black;
     font-size: medium;
-    font-family: 'myfont2';
+    font-family: 'myfont';
 }
 
 .container .sideBar2 .result {
@@ -115,6 +120,7 @@ html, body {
     background-color: rgb(201,204,200);
     border-radius: 10%;
     box-shadow: 0 4px 8px black;
+    font-family: 'myfont';
 }
 
 .container .sideBar div {
